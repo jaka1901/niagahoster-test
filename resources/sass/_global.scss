@@ -1,0 +1,128 @@
+$font-weights: normal, bold, lighter, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+$black: #303030;
+$black-2: #4C4C4C;
+$black-3: #818181;
+$grey: #F3F3F3;
+$blue: #2B8FEA;
+$blue-2: #267FDA;
+$blue-3: #31A2F0;
+$green: #50AF55;
+$facebook: #2B5998;
+$twitter: #35AEEE;
+$google: #F4453D;
+
+@for $size from 5 through 50 {
+	.font-#{$size} {
+		font-size: #{$size}px;
+	}
+	.font-global-#{$size} {
+		*{
+			font-size: #{$size}px !important;
+		}
+	}
+	.radius-#{$size}{
+		border-radius: #{$size}px;
+	}
+}
+
+@each $font-weight in $font-weights{
+	.font-#{$font-weight}{
+		font-weight: $font-weight;
+	}
+}
+
+@include media-breakpoint-down(md){
+	@for $size from 5 through 30 {
+		.font-xs-#{$size}{
+			font-size: #{$size}px !important;
+		}
+	}
+}
+
+@for $size from 1 through 100 {
+	.w-percent-#{$size}{
+		width: #{1% * $size};
+	}
+
+	@include media-breakpoint-down(md){
+		.w-percent-xs-#{$size}{
+			width: #{1% * $size};
+		}
+	}
+}
+
+@for $size from 0 through 50{
+	.lt-#{$size}{
+		letter-spacing: #{$size}px
+	}
+	.lh-#{$size}{
+		line-height: #{$size}px
+	}
+	@include media-breakpoint-down(md){
+		.lt-xs-#{$size}{
+			letter-spacing: #{$size}px !important;
+		}
+		.lh-xs-#{$size}{
+			line-height: #{$size}px !important;
+		}
+	}
+
+}
+
+@for $size from 10 through 30 {
+	input,textarea{
+		&.placeholder-#{$size}{
+			&::placeholder{
+				font-size: #{$size}px !important;
+			}
+		}
+	}
+}
+
+
+@for $size from 1 through 10 {
+	.alpha-#{$size}{
+		opacity: #{10% * $size};
+	}
+	.ls-#{$size}{
+		letter-spacing: #{10% * $size};
+	}
+	.ls-global-#{$size}{
+		*{
+			letter-spacing: #{10% * $size} !important;
+		}
+	}
+}
+
+
+.text-black-2{
+    color: $black-2;
+}
+.text-black-3{
+    color: $black-3;
+}
+.text-global-black-2{
+    *{
+        color: $black-2;
+    }
+}
+.text-global-black-3{
+    *{
+        color: $black-3;
+    }
+}
+.text-global-white{
+    *{
+        color: white !important;
+    }
+}
+
+.bg-blue-3{
+	background-color: $blue-3;
+}
+.bg-grey{
+	background-color: $grey;
+}
+.bg-black{
+	background-color: $black;
+}
