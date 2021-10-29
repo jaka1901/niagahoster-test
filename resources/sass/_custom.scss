@@ -538,7 +538,7 @@ hr{
         border: 1px solid $grey;
         margin-bottom: 35px;
 
-        &:nth-child(5n){
+        &:nth-child(4n+5){
             &:before{
                 content: "";
                 position: absolute;
@@ -594,6 +594,12 @@ hr{
         }
         &--action{
             padding: 30px 5px;
+        }
+
+        &.best-seller{
+            &--head{
+                position: relative;
+            }
         }
     }
 

@@ -14714,7 +14714,7 @@ hr {
   margin-bottom: 35px;
 }
 
-.deck-item:nth-child(5n):before {
+.deck-item:nth-child(4n+5):before {
   content: "";
   position: absolute;
   width: 100%;
@@ -14772,6 +14772,10 @@ hr {
 
 .deck-item--action {
   padding: 30px 5px;
+}
+
+.deck-item.best-seller--head {
+  position: relative;
 }
 
 @media screen and (max-width: 480px) {

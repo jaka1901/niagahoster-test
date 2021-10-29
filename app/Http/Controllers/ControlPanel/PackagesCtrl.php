@@ -5,6 +5,9 @@ namespace App\Http\Controllers\ControlPanel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// models
+use App\Models\Packages;
+
 class PackagesCtrl extends Controller
 {
     /**
@@ -12,9 +15,26 @@ class PackagesCtrl extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function best_seller(Request $request){
+        $data = Packages::find($request->id);
+        $data->best_seller = $data->best_seller == 1 ? 0 : 1;
+        $data->save();
+
+        return redirect()->route('control-panel.packages.index');
+    }
+
+    public function change_status(Request $request){
+        $data = Packages::find($request->id);
+        $data->status = $data->status == 1 ? 0 : 1;
+        $data->save();
+
+        return redirect()->route('control-panel.packages.index');
+    }
+
     public function index()
     {
-        return 'hh';
+        $data = Packages::paginate(12);
+        return view('control-panel/page/packages/index', compact('data'));
     }
 
     /**
@@ -24,7 +44,7 @@ class PackagesCtrl extends Controller
      */
     public function create()
     {
-        //
+        return view('control-panel/page/packages/form');
     }
 
     /**
@@ -35,7 +55,25 @@ class PackagesCtrl extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $content = strip_tags($request->content, '<ul><strong>');
+        $price = [
+            'price' => $request->price,
+            'price_before' => $request->price_before,
+            'price_after' => $request->price_after
+        ];
+
+        $data = [
+            'content' => $content,
+            'price'   => $price
+        ];
+        $data = json_encode($data);
+
+        $save = new Packages;
+        $save->name = $request->name;
+        $save->data = $data;
+        $save->save();
+
+        return redirect()->route('control-panel.packages.index');
     }
 
     /**
@@ -57,7 +95,8 @@ class PackagesCtrl extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Packages::find($id);
+        return view('control-panel/page/packages/form', compact('data'));
     }
 
     /**
@@ -69,7 +108,25 @@ class PackagesCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $content = strip_tags($request->content, '<ul><strong>');
+        $price = [
+            'price' => $request->price,
+            'price_before' => $request->price_before,
+            'price_after' => $request->price_after
+        ];
+
+        $data = [
+            'content' => $content,
+            'price'   => $price
+        ];
+        $data = json_encode($data);
+
+        $save = Packages::find($id);
+        $save->name = $request->name;
+        $save->data = $data;
+        $save->save();
+
+        return redirect()->route('control-panel.packages.index');
     }
 
     /**
@@ -80,6 +137,7 @@ class PackagesCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+        Packages::find($id)->delete();
+        return redirect()->route('control-panel.packages.index');
     }
 }
