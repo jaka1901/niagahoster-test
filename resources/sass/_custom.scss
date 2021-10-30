@@ -569,6 +569,9 @@ hr{
                 padding: 10px;
                 border-bottom: 1px solid $grey;
 
+                .before{
+                    text-decoration: line-through;
+                }
                 .before, .after{
                     &:before{
                         content: "Rp ";

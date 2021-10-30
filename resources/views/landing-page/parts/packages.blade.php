@@ -6,9 +6,10 @@
 
 		<div class="col-lg-12">
 			<div class="deck mt-lg-5 mt-3">
+				@foreach($data as $i => $r)
 				<div class="deck-item">
 					<div class="deck-item--head">
-						<h5 class="name">Bayi</h5>
+						<h5 class="name">{{$r->name}}</h5>
 						<div class="price">
 							<div class="before">19.000</div>
 							<div class="after">
@@ -34,6 +35,7 @@
 						<a class="button-black py-2" href="#!">Pilih sekarang</a>
 					</div>
 				</div>{{-- /.deck-item --}}
+				@endforeach
 			</div>
 		</div>
 	</div>

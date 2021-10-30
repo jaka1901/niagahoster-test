@@ -14747,6 +14747,10 @@ hr {
   border-bottom: 1px solid #F3F3F3;
 }
 
+.deck-item--head .price .before {
+  text-decoration: line-through;
+}
+
 .deck-item--head .price .before:before,
 .deck-item--head .price .after:before {
   content: "Rp ";
