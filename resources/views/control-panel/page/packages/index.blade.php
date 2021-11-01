@@ -22,6 +22,7 @@
           <th>#</th>
           <th>Name</th>
           <th>Best Seller</th>
+          <th>User Counter</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -33,13 +34,25 @@
   	    <tr>
 	      	<td>{{ $c + $data->firstItem() }}</td>
 	      	<td>{{$r->name}}</td>
-	      	<td>
+          <td>
             <a href="#!" onclick="$('#best-{{ $r->id }}').submit()" class="btn btn-sm btn-gradient-{{$r->best_seller == 1 ? 'info' : 'secondary'}}">{{$r->best_seller ? 'Iya' : 'Tidak'}}</a>
 
             <form id="best-{{ $r->id }}" method="post" action="{{ route('control-panel.packages.best-seller') }}" class="d-none">
               @csrf
               @method('post')
               <input type="hidden" name="id" value="{{ $r->id }}">
+            </form>
+          
+          </td>
+          <td>
+
+            <form method="post" action="{{ route('control-panel.packages.user-counter') }}" class="d-flex" style="height: 30px;">
+              @csrf
+              @method('post')
+
+              <input type="hidden" name="id" value="{{ $r->id }}">
+              <input name="counter" value="{{ $r->user_counter }}" type="text" class="form-control form-control-sm currency" placeholder="Users Counter" style="width: 120px;height: 30px;">
+              <button class="btn btn-sm btn-gradient-primary ml-1" type="submit">Submit</button>
             </form>
           
           </td>
@@ -80,4 +93,21 @@
   </div>
 </div>
 
+@endsection
+
+@section('scripts-bottom')
+<script type="text/javascript">
+  
+
+  function formatNumber(n) {
+    return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+  }
+
+  $('.currency').on('keyup', function() {
+    const value = this.value.replace(/,/g, '');
+    this.value = formatNumber(value)
+  });
+
+
+</script>
 @endsection

@@ -67,7 +67,7 @@
 			<div class="form-group">
 				<label>Content</label>
 				<textarea name="content" placeholder="Use list for content" id="content">
-					{!! $data->data_parsed['content'] !!}
+					{!! $data->data_parsed['content'] ?? '' !!}
 				</textarea>
 			</div>
 

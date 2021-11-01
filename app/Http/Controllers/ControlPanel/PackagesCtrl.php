@@ -15,6 +15,14 @@ class PackagesCtrl extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function user_counter(Request $request){
+        $data = Packages::find($request->id);
+        $data->user_counter = $request->counter ?? $data->user_counter;
+        $data->save();
+
+        return redirect()->route('control-panel.packages.index');
+    }
+
     public function best_seller(Request $request){
         $data = Packages::find($request->id);
         $data->best_seller = $data->best_seller == 1 ? 0 : 1;

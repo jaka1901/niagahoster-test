@@ -10,4 +10,5 @@ Route::name('control-panel.')->middleware(['auth'])->prefix('control-panel')->gr
     Route::resource('packages', 'ControlPanel\PackagesCtrl');
     Route::post('packages/change-status', 'ControlPanel\PackagesCtrl@change_status')->name('packages.change-status');
     Route::post('packages/best-seller', 'ControlPanel\PackagesCtrl@best_seller')->name('packages.best-seller');
+    Route::post('packages/user-counter', 'ControlPanel\PackagesCtrl@user_counter')->name('packages.user-counter');
 });

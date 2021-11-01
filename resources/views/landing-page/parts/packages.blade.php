@@ -33,3 +33,9 @@
 		</div>
 	</div>
 </div>
+
+@section('scripts-bottom')
+<script type="text/javascript">
+	$('li:contains("★")').addClass('text-primary')
+</script>
+@endsection
