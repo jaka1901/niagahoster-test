@@ -10,6 +10,7 @@ class LandingPage extends Controller
 {
     public function index(){
         $data = Packages::all();
+        // return $data;
 
         return view('landing-page/home', compact('data'));
     }

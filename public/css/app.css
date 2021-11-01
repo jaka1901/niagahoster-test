@@ -14428,25 +14428,25 @@ hr {
   text-decoration: none;
   opacity: 0.8;
   background-color: inherit;
-  color: inherit;
+  color: inherit !important;
 }
 
 .button-core {
   background-color: #2B8FEA;
   border: 2px solid #2B8FEA;
-  color: white;
+  color: white !important;
 }
 
 .button-black {
   background-color: white;
   border: 2px solid #303030;
-  color: #303030;
+  color: #303030 !important;
 }
 
 .button-white {
   background-color: transparent;
   border: 2px solid white;
-  color: white;
+  color: white !important;
 }
 
 .list-4 {
@@ -14704,7 +14704,8 @@ hr {
   color: #303030;
 }
 
-.deck * b {
+.deck * b,
+.deck * strong {
   font-weight: 400;
 }
 
@@ -14712,6 +14713,7 @@ hr {
   width: calc(25% - 2px);
   border: 1px solid #F3F3F3;
   margin-bottom: 35px;
+  border-radius: 4px;
 }
 
 .deck-item:nth-child(4n+5):before {
@@ -14739,6 +14741,7 @@ hr {
   margin: 0;
   padding: 7px;
   width: 100%;
+  text-transform: capitalize;
 }
 
 .deck-item--head .price {
@@ -14754,6 +14757,40 @@ hr {
 .deck-item--head .price .before:before,
 .deck-item--head .price .after:before {
   content: "Rp ";
+}
+
+.deck-item--head .price .after {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.deck-item--head .price .after * {
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+
+.deck-item--head .price .after:before {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.deck-item--head .price .after .bigger {
+  line-height: 40px;
+  padding: 0 5px;
+  font-size: 40px;
+}
+
+.deck-item--head .price .after .smaller {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.deck-item--head .price .after .smaller:after {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+  content: "/ bln";
 }
 
 .deck-item--head .users {
@@ -14778,8 +14815,46 @@ hr {
   padding: 30px 5px;
 }
 
-.deck-item.best-seller--head {
+.deck-item.best-seller {
+  border-color: #2B8FEA;
+}
+
+.deck-item.best-seller .deck-item--head {
   position: relative;
+  background-color: #2B8FEA;
+}
+
+.deck-item.best-seller .deck-item--head:before {
+  content: "Best Seller!";
+  position: absolute;
+  left: -50px;
+  top: 10px;
+  transform: rotate(-45deg);
+  background: #32B45E;
+  color: white;
+  padding: 15px 10px;
+  -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  width: 165px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deck-item.best-seller .deck-item--head * {
+  color: white;
+  border: none;
+}
+
+.deck-item.best-seller .deck-item--head .users {
+  background-color: #267FDA;
 }
 
 @media screen and (max-width: 480px) {

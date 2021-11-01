@@ -55,7 +55,7 @@ class PackagesCtrl extends Controller
      */
     public function store(Request $request)
     {
-        $content = strip_tags($request->content, '<ul><strong>');
+        $content = strip_tags($request->content, '<ul><li><strong>');
         $price = [
             'price' => $request->price,
             'price_before' => $request->price_before,
@@ -108,7 +108,7 @@ class PackagesCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        $content = strip_tags($request->content, '<ul><strong>');
+        $content = strip_tags($request->content, '<ul><li><strong>');
         $price = [
             'price' => $request->price,
             'price_before' => $request->price_before,
