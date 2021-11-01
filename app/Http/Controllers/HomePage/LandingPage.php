@@ -9,7 +9,7 @@ use App\Models\Packages;
 class LandingPage extends Controller
 {
     public function index(){
-        $data = Packages::all();
+        $data = Packages::where('status', 1)->get();
         // return $data;
 
         return view('landing-page/home', compact('data'));
